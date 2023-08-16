@@ -7,11 +7,7 @@ This repository contains a RESTful API built using Node.js, TypeScript, Express.
 - [Features](#features)
 - [Setup](#setup)
 - [API Endpoints](#api-endpoints)
-- [Validation and Error Handling](#validation-and-error-handling)
 - [Dockerization](#dockerization)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
