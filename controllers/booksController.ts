@@ -6,7 +6,7 @@ import { Request, Response } from "express";
 //@route Get /api/books
 //@access public
 
-const getBooks = asyncHandler(async (req: Request, res: Response) => {
+const getAllBooks = asyncHandler(async (req: Request, res: Response) => {
   const books = await Book.findAll({});
   res.status(200).json(books);
 });
@@ -85,7 +85,7 @@ const deleteBook = asyncHandler(async (req: Request, res: Response) => {
 });
 
 module.exports = {
-  getBooks,
+  getAllBooks,
   getBook,
   addBook,
   updateBook,
