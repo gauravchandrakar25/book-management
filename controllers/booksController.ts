@@ -50,6 +50,7 @@ const addBook = asyncHandler(async (req: Request, res: Response) => {
     if (book) {
       res.status(201).json({
         id: book.id,
+        title:book.title,
         author: book.author,
         publishedYear: book.publishedYear,
       });
