@@ -31,3 +31,16 @@ A book has the following properties:
    ```bash
    git clone https://github.com/your-username/book-management.git
    cd book-management
+
+## API Endpoints
+- GET /api/books: Retrieve a list of all books.
+- GET /api/books/:id: Retrieve a specific book by its ID.
+- POST /api/books: Add a new book to the collection.
+- PUT /api/books/:id: Update an existing book by its ID.
+- DELETE /api/books/:id: Delete a book from the collection by its ID.
+
+## Dockerization
+
+ ```bash
+docker buildx - < DockerFile .
+docker run -p 5001:5001 -d book-management
