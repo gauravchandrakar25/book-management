@@ -1,7 +1,6 @@
 const { Sequelize } = require("sequelize");
 
 const connectDb = async () => {
-
   //sequelize initialization via mysql
   const sequelize = new Sequelize({
     dialect: "mysql",
@@ -11,14 +10,15 @@ const connectDb = async () => {
     database: "bookstore", // Update with your desired database name
   });
 
-  //authenticate whether the connection is established or not 
+  //authenticate whether the connection is established or not
   try {
     await sequelize.authenticate();
     console.log("Connection has been established successfully.");
   } catch (error) {
     console.error("Unable to connect to the database:", error);
   }
+
+  await sequelize.sync();
 };
 
 export default connectDb;
-
