@@ -37,7 +37,6 @@ const addBook = asyncHandler(async (req: Request, res: Response) => {
   if (!title || !author || !publishedYear) {
     res.status(400);
     res.status(404).json({ message: "All fields are required" });
-
   }
 
   try {
@@ -85,7 +84,7 @@ const updateBook = asyncHandler(async (req: Request, res: Response) => {
   });
   res
     .status(200)
-    .json({ message: `${book.title} Updated successfully`,updatedBook });
+    .json({ message: `${book.title} Updated successfully`, updatedBook });
 });
 
 //@desc delete a book
