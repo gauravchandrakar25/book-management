@@ -41,4 +41,4 @@ const errorHandler = (error:any , req: Request, res: Response) => {
   }
 };
 
-module.exports = errorHandler;
+export default errorHandler;
