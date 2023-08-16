@@ -4,7 +4,7 @@ const connectDb = async () => {
   //sequelize initialization via mysql
   const sequelize = new Sequelize({
     dialect: "mysql",
-    host: "127.0.0.1:3306", // Update with your MySQL host
+    host: "127.0.0.1", // Update with your MySQL host
     // username: "root", // Update with your MySQL username
     // password: "password", // Update with your MySQL password
     // database: "bookstore", // Update with your desired database name

@@ -1,14 +1,18 @@
 const asyncHandler = require("express-async-handler");
-const Book = require("../models/book");
+const { Book } = require("../models/book");
 import { Request, Response } from "express";
 
 //@desc get all books
 //@route Get /api/books
 //@access public
 
-const getAllBooks = asyncHandler(async (req: Request, res: Response) => {
-  const books = await Book.findAll({});
-  res.status(200).json(books);
+const getAllBooks = asyncHandler(async (res: Response) => {
+  try {
+    const books = await Book.findAll({});
+    res.status(200).json(books);
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
 });
 
 //@desc get specific books
@@ -16,8 +20,12 @@ const getAllBooks = asyncHandler(async (req: Request, res: Response) => {
 //@access public
 
 const getBook = asyncHandler(async (req: Request, res: Response) => {
-  const book = await Book.findOne({ id: req.params.id });
-  res.status(200).json(book);
+  try {
+    const book = await Book.findOne({ id: req.params.id });
+    res.status(200).json(book);
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
 });
 
 //@desc add new book
@@ -25,20 +33,35 @@ const getBook = asyncHandler(async (req: Request, res: Response) => {
 //@access public
 
 const addBook = asyncHandler(async (req: Request, res: Response) => {
-  console.log("The request body is ", req.body);
   const { title, author, publishedYear } = req.body;
   if (!title || !author || !publishedYear) {
     res.status(400);
     throw new Error("All fields are required");
   }
 
-  const book = await Book.create({
-    id: req.params.id,
-    title,
-    author,
-    publishedYear,
-  });
-  res.status(201).json(book);
+  try {
+    const book = await Book.create({
+      // id: req.params.id,
+      title,
+      author,
+      publishedYear,
+    });
+
+    if (book) {
+      res.status(201).json({
+        id: book.id,
+        author: book.author,
+        publishedYear: book.publishedYear,
+      });
+    } else {
+      res.status(404);
+      throw new Error("Entered data is not valid");
+    }
+    res.status(201).json(book);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
 //@desc update book detail
