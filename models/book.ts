@@ -12,6 +12,7 @@ const Book = sequelize.define(
     title: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true
     },
     author: {
       type: DataTypes.STRING,
@@ -28,4 +29,4 @@ const Book = sequelize.define(
 );
 Book.sync();
 
-export default Book;
+module.exports = Book;

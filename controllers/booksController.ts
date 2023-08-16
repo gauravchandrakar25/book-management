@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const { Book } = require("../models/book");
+const Book  = require("../models/book");
 import { Request, Response } from "express";
 
 //@desc get all books
@@ -8,7 +8,7 @@ import { Request, Response } from "express";
 
 const getAllBooks = asyncHandler(async (res: Response) => {
   try {
-    const books = await Book.findAll({});
+    const books = await Book?.book?.findAll();
     res.status(200).json(books);
   } catch (error) {
     res.status(500).json({ message: error });
@@ -60,7 +60,7 @@ const addBook = asyncHandler(async (req: Request, res: Response) => {
     res.status(201).json(book);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ message: error });
   }
 });
 
