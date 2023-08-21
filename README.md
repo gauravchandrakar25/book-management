@@ -29,7 +29,7 @@ A book has the following properties:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/book-management.git
+   git clone https://github.com/gauravchandrakar25/book-management.git
    cd book-management
 
 ## API Endpoints
